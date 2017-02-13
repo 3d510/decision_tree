@@ -55,6 +55,7 @@ def split_examples_from_node(node, attribute_index):
     # split current examples in one node based on attribute
     split_examples = {}
     values = attributes[attribute_index][1]
+
     examples_indexes_in_this_node = node[1]
     for value in values:
         split_examples[value] = []
@@ -65,12 +66,12 @@ def split_examples_from_node(node, attribute_index):
 
 def chooseAttribute(node):
     attributes_to_choose = node[2]
-    max = -1000000000
+    min = 1000000000
     chosen_att = -1
     for att in attributes_to_choose:
         importance_value = importance(node,att)
-        if importance_value > max:
-            max = importance_value
+        if importance_value < min:
+            min = importance_value
             chosen_att = att
     node[0][2] = chosen_att
     return chosen_att
@@ -127,9 +128,11 @@ def split(node):
     # create node child nodes
     for value in values_for_best_att:
         if not split_examples[value]:
-            continue # if there are no examples with this value for best attribute, skip
-        child_node = create_node(node_index,value,"",split_examples[value],attributes_to_choose_for_child)
-        split(child_node)
+            child_node = create_node(node_index, value, "", split_examples[value], [])
+            split(child_node)
+        else:
+            child_node = create_node(node_index,value,"",split_examples[value],attributes_to_choose_for_child)
+            split(child_node)
 
 def build_tree():
     tree = {}
@@ -157,7 +160,7 @@ pre_process_string_data()
 #     print attributes[i]
 
 # build decision tree
-root_node = create_node(-1, "", "", range(len(examples)), range(len(attributes)))
+root_node = create_node(-1, "", "", range(len(examples)), range(len(attributes)-1))
 split(root_node)
 for i in range(len(tree_nodes)):
     print i
