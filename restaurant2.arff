@@ -1,0 +1,27 @@
+@RELATION restaurant
+
+@ATTRIBUTE alt {yes,no}
+@ATTRIBUTE bar {yes,no}
+@ATTRIBUTE fri {yes,no}
+@ATTRIBUTE hun {yes,no}
+@ATTRIBUTE pat {Some,Full,None}
+@ATTRIBUTE price {1,2,3}
+@ATTRIBUTE rain {yes,no}
+@ATTRIBUTE res {yes,no}
+@ATTRIBUTE type {French,Thai,Burger,Italian}
+@ATTRIBUTE est {0-10,10-30,30-60,>60}
+@ATTRIBUTE willwait {yes,no,maybe}
+
+@DATA
+yes,no,no,yes,Some,3,no,yes,French,0-10,yes
+yes,no,no,yes,Full,1,no,no,Thai,30-60,no
+no,yes,no,no,Some,1,no,no,Burger,0-10,yes
+yes,no,yes,yes,Full,1,yes,no,Thai,10-30,maybe
+yes,no,yes,no,Full,3,no,yes,French,>60,no
+no,yes,no,yes,Some,2,yes,yes,Italian,0-10,yes
+no,yes,no,no,None,1,yes,no,Burger,0-10,no
+no,no,no,yes,Some,2,yes,yes,Thai,0-10,maybe
+no,yes,yes,no,Full,1,yes,no,Burger,>60,no
+yes,yes,yes,yes,Full,3,no,yes,Italian,10-30,no
+no,no,no,no,None,1,no,no,Thai,0-10,maybe
+yes,yes,yes,yes,Full,1,no,no,Burger,30-60,yes
