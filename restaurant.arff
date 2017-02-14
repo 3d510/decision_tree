@@ -1,27 +1,27 @@
 @RELATION restaurant
 
-@ATTRIBUTE alt {0,1}
-@ATTRIBUTE bar {0,1}
-@ATTRIBUTE fri {0,1}
-@ATTRIBUTE hun {0,1}
+@ATTRIBUTE alt {yes,no}
+@ATTRIBUTE bar {yes,no}
+@ATTRIBUTE fri {yes,no}
+@ATTRIBUTE hun {yes,no}
 @ATTRIBUTE pat {Some,Full,None}
 @ATTRIBUTE price {1,2,3}
-@ATTRIBUTE rain {0,1}
-@ATTRIBUTE res {0,1}
-@ATTRIBUTE type STRING
+@ATTRIBUTE rain {yes,no}
+@ATTRIBUTE res {yes,no}
+@ATTRIBUTE type {French,Thai,Burger,Italian}
 @ATTRIBUTE est {0-10,10-30,30-60,>60}
-@ATTRIBUTE willwait {0,1}
+@ATTRIBUTE willwait {yes,no}
 
 @DATA
-1,0,0,1,Some,3,0,1,French,0-10,1
-1,0,0,1,Full,1,0,0,Thai,30-60,0
-0,1,0,0,Some,1,0,0,Burger,0-10,1
-1,0,1,1,Full,1,1,0,Thai,10-30,1
-1,0,1,0,Full,3,0,1,French,>60,0
-0,1,0,1,Some,2,1,1,Italian,0-10,1
-0,1,0,0,None,1,1,0,Burger,0-10,0
-0,0,0,1,Some,2,1,1,Thai,0-10,1
-0,1,1,0,Full,1,1,0,Burger,>60,0
-1,1,1,1,Full,3,0,1,Italian,10-30,0
-0,0,0,0,None,1,0,0,Thai,0-10,0
-1,1,1,1,Full,1,0,0,Burger,30-60,1
+yes,no,no,yes,Some,3,no,yes,French,0-10,yes
+yes,no,no,yes,Full,1,no,no,Thai,30-60,no
+no,yes,no,no,Some,1,no,no,Burger,0-10,yes
+yes,no,yes,yes,Full,1,yes,no,Thai,10-30,yes
+yes,no,yes,no,Full,3,no,yes,French,>60,no
+no,yes,no,yes,Some,2,yes,yes,Italian,0-10,yes
+no,yes,no,no,None,1,yes,no,Burger,0-10,no
+no,no,no,yes,Some,2,yes,yes,Thai,0-10,yes
+no,yes,yes,no,Full,1,yes,no,Burger,>60,no
+yes,yes,yes,yes,Full,3,no,yes,Italian,10-30,no
+no,no,no,no,None,1,no,no,Thai,0-10,no
+yes,yes,yes,yes,Full,1,no,no,Burger,30-60,yes

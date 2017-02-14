@@ -144,8 +144,41 @@ def build_tree():
         tree[node[0][0]].append(node[0][3])
     return tree
 
-def print_tree():
-    pass
+def print_tree(node,indent):
+    att = tree_nodes[int(node)][0][2]
+    if att != '':
+        attName = attributes[int(att)][0][0]
+        print ( attName + '?')
+
+    if len(tree[int(node)]) == 0:
+        examples_nodes = tree_nodes[int(node)][1]
+        if(len(examples_nodes) != 0):
+            print examples[int(examples_nodes[0])][10]
+        else:
+            father_node = tree_nodes[int(node)][0][0]
+            examples_father = tree_nodes[father_node][1]
+            final_values = attributes[10][1]
+            score = {}
+            for l in range(len(final_values)):
+                score[l] = 0
+            for j in range(len(examples_father)):
+                val = examples[int(examples_father[j])][10]
+                for k in range(len(final_values)):
+                    if val == final_values[k]:
+                        score[k] += 1
+                        continue
+            max_value = -1
+            max_index = -1
+            for m in range(len(final_values)):
+                if score[m] > max_value:
+                    max_value = score[m]
+                    max_index = m
+            print final_values[max_index]
+    else:
+        for i in range(len(tree[node])):
+            name = tree_nodes[int(tree[node][i])][0][1]
+            print indent + name + '->',
+            print_tree(tree[node][i], indent + '\t')
 
 # ---------------------------------------------main program-----------------------------------------------------------#
 
@@ -162,12 +195,14 @@ pre_process_string_data()
 # build decision tree
 root_node = create_node(-1, "", "", range(len(examples)), range(len(attributes)-1))
 split(root_node)
-for i in range(len(tree_nodes)):
-    print i
-    print tree_nodes[i]
+#for i in range(len(tree_nodes)):
+#    print i
+#    print tree_nodes[i]
+
+#print attributes
 
 # print decision tree
 tree = build_tree()
-print tree
-print_tree()
-
+#print tree
+node = 0
+print_tree(node,indent='')
