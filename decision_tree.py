@@ -182,8 +182,9 @@ def print_tree(node,indent):
 
 # ---------------------------------------------main program-----------------------------------------------------------#
 
-# read in data
-examples, attributes = readArffInput("restaurant.arff")
+user_input = raw_input("Enter the file name: ")
+#"restaurant.arff"
+examples, attributes = readArffInput(user_input)
 pre_process_string_data()
 # for i in range(len(examples)):
 #     print i
